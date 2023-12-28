@@ -9,7 +9,7 @@ import lombok.Setter;
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userRoleId;
+    private int userRoleId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Users user;
