@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @Entity
@@ -52,7 +54,8 @@ public class Token {
     @Column(name = "End_Time")
     private LocalDateTime endTime;
 
-    private Long taskId;
+    @OneToMany(mappedBy = "taskid")
+    private List<Task> taskId = new LinkedList<>();
     private Long projectId;
 
 }

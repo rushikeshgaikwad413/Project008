@@ -29,5 +29,9 @@ public class Task {
     @Column(name = "Duration" , length = 45)
     private String duration;
 
+    @ManyToOne(fetch = FetchType.EAGER , optional = false)
+    @JoinColumn()
+    private Task taskid;
+
     private Long projectId;
 }
