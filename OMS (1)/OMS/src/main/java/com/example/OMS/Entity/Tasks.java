@@ -1,9 +1,6 @@
 package com.example.OMS.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,19 +9,22 @@ import lombok.Setter;
 @Setter
 public class Tasks {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-        private int taskId;
-        private String description;
-        private String assignedTo;
-        private String taskName;
-        private boolean status;
-        private boolean duration;
+    private int taskId;
+    private String description;
+    private String assignedTo;
+    private String taskName;
+    private boolean status;
+    private boolean duration;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Project project;
 
 
-        //Constructor
-        public Tasks() {
+    //Constructor
+    public Tasks() {
 
-        }
+    }
 }

@@ -1,10 +1,8 @@
 package com.example.OMS.Entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import ch.qos.logback.core.net.server.Client;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,8 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class Project {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int projectId;
     private String projectName;
@@ -26,6 +24,13 @@ public class Project {
     private Date endDate;
     private String status;
     private int duration;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Users user;
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    private Client client;
 
 
     //Constructor
