@@ -1,35 +1,57 @@
 package com.example.OMS.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
 @Entity
 @Getter
 @Setter
-
+@Table(name = "Tokens")
 public class Token {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Token_Id" , nullable = false)
     private Long tokenId;
+
+    @Column(name = "Task_Name" , length = 45)
     private String taskName;
+
+    @Column(name = "Subtask_Name" , length = 45)
     private String subTaskName;
+
+    @Column(name = "Description" , length = 250)
     private String description;
+
+    @Column(name = "Status")
     private String status;
+
+    @Column(name = "Duration" , length = 45)
     private String duration;
+
+    @Column(name = "Comments" , length = 250)
     private String comments;
+
+    @Column(name = "AssignedTo_UserId" , length = 30)
     private Long assignedToUserId;
-    private LocalDateTime createDate;
-    private LocalDateTime endDate;
+
+    @Column(name = "Create_Date")
+    private LocalDate createDate;
+
+    @Column(name = "End_Date")
+    private LocalDate endDate;
+
+    @Column(name = "Start_Time")
     private LocalDateTime startTime;
+
+    @Column(name = "End_Time")
     private LocalDateTime endTime;
+
     private Long taskId;
     private Long projectId;
 
