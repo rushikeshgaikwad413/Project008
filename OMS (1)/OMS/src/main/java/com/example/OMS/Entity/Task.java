@@ -2,11 +2,16 @@ package com.example.OMS.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "Task")
 public class Task {
     @Id
@@ -29,9 +34,9 @@ public class Task {
     @Column(name = "Duration" , length = 45)
     private String duration;
 
-    @ManyToOne(fetch = FetchType.EAGER , optional = false)
-    @JoinColumn()
-    private Task taskid;
+    @OneToMany(mappedBy = "taskid")
+    private List<Task> task_id = new LinkedList<>();
 
-    private Long projectId;
+    @ManyToOne(fetch = FetchType.EAGER , optional = false)
+    private Project projectId;
 }
